@@ -17,7 +17,7 @@ app.post('/command', (req, res) => {
         return res.status(400).json({ error: 'No command provided' });
     }
 
-    exec($`${process.env.LDPLAYER_PATH}\\dnconsole.exe ${command}`, (error, stdout, stderr) => {
+    exec(`${process.env.LDPLAYER_PATH}\\dnconsole.exe ${command}`, (error, stdout, stderr) => {
         if (error) {
             return res.status(500).json({ error: error.message });
         }
@@ -28,7 +28,7 @@ app.post('/command', (req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
